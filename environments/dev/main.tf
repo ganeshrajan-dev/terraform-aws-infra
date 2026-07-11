@@ -14,8 +14,8 @@ module "vpc" {
 
 
 module "sg" {
-  source = "D:/terraform-devops-project/modules/security-group"
-  vpc_id = module.vpc.vpc_id
+  source      = "D:/terraform-devops-project/modules/security-group"
+  vpc_id      = module.vpc.vpc_id
   environment = var.environment
 }
 
@@ -23,7 +23,7 @@ module "sg" {
 module "ec2" {
 
   source = "D:/terraform-devops-project/modules/ec2"
-  
+
   instance_type = var.instance_type
 
   ami_id = data.aws_ami.ubuntu.id
@@ -43,18 +43,18 @@ module "ec2" {
 data "aws_ami" "ubuntu" {
 
   most_recent = true
-  
-  owners = [ "099720109477" ]
+
+  owners = ["099720109477"]
 
   filter {
     name = "name"
 
-    values = [ "ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-*" ]
+    values = ["ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-*"]
   }
   filter {
     name = "virtualization-type"
 
-    values = [ "hvm" ]
+    values = ["hvm"]
   }
-  
+
 }
