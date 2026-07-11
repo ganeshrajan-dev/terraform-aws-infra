@@ -1,6 +1,6 @@
 module "vpc" {
 
-  source = "D:/terraform-devops-project/modules/vpc"
+  source = "../../modules/vpc"
 
   vpc_cidr = var.vpc_cidr
 
@@ -14,7 +14,7 @@ module "vpc" {
 
 
 module "sg" {
-  source      = "D:/terraform-devops-project/modules/security-group"
+  source      = "../../modules/security-group"
   vpc_id      = module.vpc.vpc_id
   environment = var.environment
 }
@@ -22,7 +22,7 @@ module "sg" {
 
 module "ec2" {
 
-  source = "D:/terraform-devops-project/modules/ec2"
+  source = "../../modules/ec2"
 
   instance_type = var.instance_type
 
