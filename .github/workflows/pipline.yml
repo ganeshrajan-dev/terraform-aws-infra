@@ -1,0 +1,38 @@
+name : pipelinetest
+
+on:
+    push:
+        branches:
+            - 'main'
+            - 'feature/*'
+
+    pull_request:
+        branches:
+            - 'main'
+
+    
+jobs:
+
+    testing-job:
+        name: testing-jobs
+        runs-on: ubuntu-latest
+
+        if: github.event == 'pull_request'
+
+        steps:
+            - name: pull_request check
+              run: echo "From Pull Request"
+
+        
+    deploy-job:
+        name: deploy-jobs
+        runs-on: ubuntu-latest
+
+        if: github.event == 'push'
+
+        steps:
+            - name: deploy-step
+              run: echo "from deployment"
+
+
+
